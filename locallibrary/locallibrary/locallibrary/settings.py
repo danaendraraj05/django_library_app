@@ -68,6 +68,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'locallibrary.wsgi.application'
 
 
