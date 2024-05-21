@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Authors</title>
+</head>
+<body>
+    {% block content %}
+    <h1>All Authors</h1>
+    <ul>
+        {% for author in authors_list %}
+            <li><a href="{{ author.get_absolute_url }}">{{ author }}</a></li>
+        {% empty %}
+            <li>No authors available.</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+</body>
+</html>

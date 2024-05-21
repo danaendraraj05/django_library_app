@@ -93,5 +93,5 @@ ul li span {
 
 body {
     background-image: linear-gradient(to right, #fcfcfc, #9eb1f1);
-    overflow: hidden; /* Hide the scroll bar */
+    overflow: hidden; 
 }

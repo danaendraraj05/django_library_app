@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ author }}</title>
+    <!-- Add your CSS stylesheets here -->
+</head>
+<body>
+    {% block content %}
+    <h1>{{ author }}</h1>
+    <p><strong>Date of Birth:</strong> {{ author.date_of_birth }}</p>
+    <p><strong>Date of Death:</strong> {{ author.date_of_death }}</p>
+
+    <h2>Books by {{ author }}</h2>
+    <ul>
+        {% for book in author.book_set.all %}
+            <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+        {% empty %}
+            <li>No books by this author.</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+    <!-- Add any additional content or styling here -->
+</body>
+</html>
