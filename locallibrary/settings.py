@@ -8,12 +8,15 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
+
+
 """
 
 import os
 from pathlib import Path
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
+from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,6 +36,8 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['secret-shelf-01811.herokuapp.com', '127.0.0.1']
 
+env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
+load_dotenv(env_path)
 
 # Application definition
 
@@ -89,6 +94,12 @@ DATABASES = {
     }
 }
 
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=500,
+        conn_health_checks=True,
+    )
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -125,11 +136,13 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = BASE_DIR / 'staticfiles'  #. os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles' #. os.path.join(BASE_DIR, 'staticfiles')
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
@@ -142,3 +155,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+
+# Static file serving.
+# https://whitenoise.readthedocs.io/en/stable/django.html#add-compression-and-caching-support
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+
