@@ -1,0 +1,96 @@
+/* style.css */
+
+/* Apply styles to the sidebar navigation */
+.sidebar-nav {
+    margin-top: 60px;
+    list-style-type: none;
+    padding: 0;
+}
+  
+.sidebar-nav li {
+    margin-bottom: 10px;
+}
+  
+.sidebar-nav a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+  
+.sidebar-nav a:hover {
+    color: #007bff;
+}
+  
+/* Apply styles to the main content area */
+.col-sm-10 {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+  
+/* Apply styles to links within the main content area */
+.col-sm-10 a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+  
+.col-sm-10 a:hover {
+    color: #0056b3;
+}
+  
+/* Apply styles to the h1 heading */
+h1 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+  
+/* Apply styles to the paragraph */
+p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.5;
+}
+  
+/* Apply styles to the dynamic content list */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+  
+ul li {
+    margin-bottom: 10px;
+}
+  
+ul li strong {
+    font-weight: bold;
+}
+  
+/* Apply styles to the dynamic content values */
+ul li span {
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+}
+
+/* Additional styles */
+.site-header {
+    margin-top: 10px;
+    margin-left: -150px;
+}
+
+.side-image img {
+    height: 60%;
+    width: 80%;
+    align-items: end;
+}
+
+.content {
+    height: 80%;
+    width: 50%;
+}
+
+body {
+    background-image: linear-gradient(to right, #fcfcfc, #9eb1f1); 
+}
